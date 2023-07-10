@@ -2,7 +2,7 @@
 import { capitalizeFirstLetter } from "../utils";
 
 const props = defineProps({
-  wheatherInfo: {
+  weatherInfo: {
     type: [Object, null],
     required: true,
   },
@@ -17,19 +17,19 @@ const today = new Date().toLocaleString("en-EN", {
 </script>
 
 <template>
-  <div v-if="wheatherInfo?.weather" class="summary">
+  <div v-if="weatherInfo?.weather" class="summary">
     <div
-      :style="`background-image: url('src/assets/img/weather-main/${wheatherInfo?.weather[0].description}.png')`"
+      :style="`background-image: url('/weather-main/${weatherInfo?.weather[0].description}.png')`"
       class="pic-main"
     ></div>
     <div class="weather">
-      <div class="temp">{{ Math.round(wheatherInfo?.main?.temp) }} °C</div>
+      <div class="temp">{{ Math.round(weatherInfo?.main?.temp) }} °C</div>
       <div class="weather-desc text-block">
-        {{ capitalizeFirstLetter(wheatherInfo?.weather[0].description) }}
+        {{ capitalizeFirstLetter(weatherInfo?.weather[0].description) }}
       </div>
     </div>
     <div class="city text-block">
-      {{ wheatherInfo?.name }}, {{ wheatherInfo?.sys?.country }}
+      {{ weatherInfo?.name }}, {{ weatherInfo?.sys?.country }}
     </div>
     <div class="date text-block">
       {{ today }}
